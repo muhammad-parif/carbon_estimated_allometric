@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CarbonEstimatorDialogBase</class>
+ <widget class="QDialog" name="CarbonEstimatorDialogBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>520</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Plugin Pendugaan Cadangan Karbon</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox_Inputs">
+     <property name="title"><string>Data Inventarisasi (Vektor Poin)</string></property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0"><widget class="QLabel" name="label"><property name="text"><string>Layer Poin:</string></property></widget></item>
+      <item row="0" column="1"><widget class="QgsMapLayerComboBox" name="cmbLayerPoin"/></item>
+      <item row="1" column="0"><widget class="QLabel" name="label_2"><property name="text"><string>Kolom ID Plot:</string></property></widget></item>
+      <item row="1" column="1"><widget class="QgsFieldComboBox" name="cmbFieldPlot"/></item>
+      <item row="2" column="0"><widget class="QLabel" name="label_3"><property name="text"><string>Kolom Spesies:</string></property></widget></item>
+      <item row="2" column="1"><widget class="QgsFieldComboBox" name="cmbFieldSpesies"/></item>
+      <item row="3" column="0"><widget class="QLabel" name="label_7"><property name="text"><string>Kolom Genus:</string></property></widget></item>
+      <item row="3" column="1"><widget class="QgsFieldComboBox" name="cmbFieldGenus"/></item>
+      <item row="4" column="0"><widget class="QLabel" name="label_4"><property name="text"><string>Kolom DBH (cm):</string></property></widget></item>
+      <item row="4" column="1"><widget class="QgsFieldComboBox" name="cmbFieldDBH"/></item>
+      <item row="5" column="0"><widget class="QLabel" name="label_5"><property name="text"><string>Kategori Hutan:</string></property></widget></item>
+      <item row="5" column="1">
+       <widget class="QComboBox" name="cmbTipeHutan">
+        <item><property name="text"><string>Hutan Darat (Non-Mangrove)</string></property></item>
+        <item><property name="text"><string>Hutan Mangrove</string></property></item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_Interpolation">
+     <property name="title"><string>Parameter Interpolasi IDW</string></property>
+     <layout class="QFormLayout" name="formLayout_2">
+      <item row="0" column="0"><widget class="QLabel" name="label_6"><property name="text"><string>Batas AOI (Vektor):</string></property></widget></item>
+      <item row="0" column="1"><widget class="QgsMapLayerComboBox" name="cmbLayerAOI"/></item>
+      <item row="1" column="0"><widget class="QLabel" name="label_8"><property name="text"><string>Ukuran Piksel (m):</string></property></widget></item>
+      <item row="1" column="1"><widget class="QDoubleSpinBox" name="spinPixelSize"><property name="value"><number>10</number></property><property name="maximum"><number>10000</number></property></widget></item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_Output">
+     <property name="title"><string>Output</string></property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item><widget class="QLabel" name="label_9"><property name="text"><string>Pilih Folder Penyimpanan:</string></property></widget></item>
+      <item><widget class="QgsFileWidget" name="fileWidgetOutput"><property name="storageMode"><enum>QgsFileWidget::GetDirectory</enum></property></widget></item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation"><enum>Qt::Horizontal</enum></property>
+     <property name="standardButtons"><set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set></property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget><class>QgsFileWidget</class><extends>QWidget</extends><header>qgis.gui</header></customwidget>
+  <customwidget><class>QgsMapLayerComboBox</class><extends>QComboBox</extends><header>qgis.gui</header></customwidget>
+  <customwidget><class>QgsFieldComboBox</class><extends>QComboBox</extends><header>qgis.gui</header></customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection><sender>buttonBox</sender><signal>accepted()</signal><receiver>CarbonEstimatorDialogBase</receiver><slot>accept()</slot></connection>
+  <connection><sender>buttonBox</sender><signal>rejected()</signal><receiver>CarbonEstimatorDialogBase</receiver><slot>reject()</slot></connection>
+ </connections>
+</ui>
